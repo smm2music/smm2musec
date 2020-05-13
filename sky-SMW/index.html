@@ -1,4 +1,4 @@
-<title>SMW Sky Theme</title>
+<html><head><title>SMW Sky Theme</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"> </script>
 <style>
@@ -41,11 +41,35 @@ function toggleSound() {
             }
         }
 
+    
+    function RepeatOneFalse() {
+	var image = document.getElementById('myImageRepeat');
+	if (image.src.match("../images//ic_repeat_48px-512.png")) {
+	window.location.href = "../snow-SMW";
+	}else{
+	toggleSound();
+	}
+}
+
+        function changeImage2() {
+            var image = document.getElementById('myImageRepeat');
+            if (image.src.match("../images/ic_repeat_one_48px-512.png")) {
+                image.src = "../images//ic_repeat_48px-512.png";
+            }
+            else {
+                image.src = "../images/ic_repeat_one_48px-512.png";
+            }
+        }
+
 </script>
 	
 </head>
 <body style="background-color:black">
 <div class="imgbox">
-    <a href="javascript:void();" onclick="toggleSound(); changeImage();" class="center-fit"><img id="myImage" class="center-fit" style="filter:invert();" src="../images/1024px-Speaker_Icon.svg.png"></a>
+    <p class="center-fit">
+    <img id="myImage" onclick="toggleSound(); changeImage();" class="center-fit" style="filter:invert();" src="../images/1024px-Speaker_Icon.svg.png">
+<img src="../images/ic_repeat_one_48px-512.png" id="myImageRepeat" onclick="changeImage2();" style="/* right: 40%; *//* bottom: 35%; */filter: invert(1);/* position: absolute; */max-width: 100%;max-height: 100vh;margin: auto;">
+    </p>
 </div>
-<audio id="audio" autoplay="true" loop="true" src="songs/sky-theme.mp3">
+<audio onended="RepeatOneFalse()" id="audio" autoplay="true" src="songs/sky-theme.mp3">
+</audio></body></html>
